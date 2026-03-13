@@ -57,7 +57,7 @@ def simulate_move_and_check_if_player_ends_move(game_state: GameState, player_st
 
     if game_state.dice_thrown is None:
         if is_throwing:
-            game_state.dice_thrown = sorted([random.randint(1, 7) for i in range(4)])
+            game_state.dice_thrown = sorted([random.randint(1, 7) for _ in range(4)])
         else:
             game_state.player_finishes_move(player_id)
             return True
@@ -107,7 +107,7 @@ def simulate_game_and_return_winning_player(player1_strategy, player2_strategy):
         if game.did_finish():
             winning_player = current_player
         
-        if does_player_ends:
+        if does_player_ends: # Swap player
             current_player = 3 - current_player
 
 
